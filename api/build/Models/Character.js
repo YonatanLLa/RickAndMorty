@@ -1,34 +1,39 @@
-const {DataTypes} = require('sequelize')
+"use strict";
+const { DataTypes } = require('sequelize');
 module.exports = (database) => {
-    database.define('Favorites',{
-        id:{
+    database.define('Characters', {
+        id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            // autoIncrement: true
+            autoIncrement: true
         },
-        name:{
+        name: {
             type: DataTypes.STRING,
-            unique: true, // opción de validación unique
-
+            // unique: true,
             allowNull: false
         },
-       
-        species:{
+        status: {
+            type: DataTypes.ENUM('Alive', 'Dead', 'unknown'),
+            allowNull: false
+        },
+        species: {
             type: DataTypes.STRING,
             allowNull: false,
         },
-        gender:{
+        gender: {
             type: DataTypes.ENUM('Female', 'Male', 'Genderless', 'unknown'),
             allowNull: false,
         },
- 
-        image:{
+        origin: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        image: {
             type: DataTypes.STRING,
             allowNull: false,
         }
-    },
-    {
+    }, {
         timestamps: false, // Desactiva los timestamps
-    })
-}
+    });
+};

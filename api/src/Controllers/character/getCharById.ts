@@ -2,9 +2,9 @@
 
 // const API = "https://rickandmortyapi.com/api/character";
 
-const {Characters} = require("../db")
+const {Characters} = require("../../db")
 
-const getCharById = async (id) => {
+const getCharById = async (id: string) => {
   // const response = await axios(API + "/" + id);
   //   return {
   //     id:response.data.id,
@@ -19,4 +19,4 @@ const getCharById = async (id) => {
   return getAllCharracter
 
 };
-module.exports = getCharById;
+export default getCharById;

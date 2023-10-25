@@ -1,7 +1,10 @@
 const axios = require("axios");
-// const {character} = require('../db');
-const {Characters} = require("../db");
-const getApiData = async () => {
+const {Characters} = require("../../db");
+
+import { CharacterAtributes } from "../../interface/chareacter"
+
+
+ const getApiData = async () => {
   try {
     let character = [];
     let i = 1;
@@ -13,7 +16,7 @@ const getApiData = async () => {
       i++;
     }
     character = (await Promise.all(character)).map((char) =>
-      char.data.results.map((char) => {
+      char.data.results.map((char: CharacterAtributes) => {
         return {
           id: char.id,
           name: char.name,
@@ -26,18 +29,18 @@ const getApiData = async () => {
       })
     );
     return character.flat();
-  } catch (error) {
+  } catch (error: any) {
     return { error: error.message };
   }
 };
 
-const saveApiData = async () => {
+export const saveApiData = async () => {
   try {
     const allCharacters = await getApiData();
     await Characters.bulkCreate(allCharacters);
-  } catch (error) {
+    return
+  } catch (error: any) {
     return { error: error.message };
   }
 };
 
-module.exports = { saveApiData };

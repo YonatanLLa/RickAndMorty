@@ -19,7 +19,7 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const app = require("./src/app");
 const { database } = require("./src/db");
-const { saveApiData } = require("./src/Controllers/saveApiDate");
+const { saveApiData } = require("./src/Controllers/character/saveApiDate");
 
 database.sync({ force: true }).then(async() => {
   console.log("holaaaaaaa");

@@ -1,22 +1,20 @@
-const {DataTypes} = require('sequelize')
-module.exports = (database) => {
-    database.define('Characters',{
+import { DataTypes, Sequelize } from "sequelize"
+
+export default (database: Sequelize) => {
+    const Characters =   database.define('Favorites',{
         id:{
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
-            autoIncrement: true
+            // autoIncrement: true
         },
         name:{
             type: DataTypes.STRING,
-            // unique: true,
-            
+            unique: true, // opción de validación unique
+
             allowNull: false
         },
-        status:{
-            type: DataTypes.ENUM('Alive', 'Dead', 'unknown'),
-            allowNull: false
-        },
+       
         species:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -29,6 +27,7 @@ module.exports = (database) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
+ 
         image:{
             type: DataTypes.STRING,
             allowNull: false,
@@ -37,4 +36,6 @@ module.exports = (database) => {
     {
         timestamps: false, // Desactiva los timestamps
     })
+
+    return Characters
 }
