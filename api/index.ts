@@ -17,9 +17,9 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const app = require("./src/app");
-const { database } = require("./src/db");
-const { saveApiData } = require("./src/Controllers/character/saveApiDate");
+const app  = require("./src/app")
+import { database } from "./src/db"
+import { saveApiData } from "./src/Controllers/character/saveApiDate"
 
 database.sync({ force: true }).then(async() => {
   console.log("holaaaaaaa");
